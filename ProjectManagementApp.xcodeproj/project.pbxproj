@@ -16,6 +16,9 @@
 		A88477651F30F32B0020AF31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A88477631F30F32B0020AF31 /* LaunchScreen.storyboard */; };
 		A88477701F30F32B0020AF31 /* ProjectManagementAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A884776F1F30F32B0020AF31 /* ProjectManagementAppTests.swift */; };
 		A884777B1F30F32B0020AF31 /* ProjectManagementAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A884777A1F30F32B0020AF31 /* ProjectManagementAppUITests.swift */; };
+		A88477C81F320CE20020AF31 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477C71F320CE20020AF31 /* Task.swift */; };
+		A88477CA1F3210380020AF31 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477C91F3210380020AF31 /* Project.swift */; };
+		A88477CC1F3211F30020AF31 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477CB1F3211F30020AF31 /* DatabaseManager.swift */; };
 		B63209EB52AC82E426D57D71 /* Pods_ProjectManagementAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26EA4C3AE1D25C813F62087E /* Pods_ProjectManagementAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,9 @@
 		A88477761F30F32B0020AF31 /* ProjectManagementAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectManagementAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A884777A1F30F32B0020AF31 /* ProjectManagementAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagementAppUITests.swift; sourceTree = "<group>"; };
 		A884777C1F30F32B0020AF31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A88477C71F320CE20020AF31 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		A88477C91F3210380020AF31 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		A88477CB1F3211F30020AF31 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,12 +143,10 @@
 		A88477591F30F32B0020AF31 /* ProjectManagementApp */ = {
 			isa = PBXGroup;
 			children = (
-				A884775A1F30F32B0020AF31 /* AppDelegate.swift */,
-				A884775C1F30F32B0020AF31 /* ViewController.swift */,
+				A884778A1F30F9360020AF31 /* Model */,
+				A88477881F30F91B0020AF31 /* Service */,
+				A88477891F30F9250020AF31 /* Views */,
 				A884775E1F30F32B0020AF31 /* Main.storyboard */,
-				A88477611F30F32B0020AF31 /* Assets.xcassets */,
-				A88477631F30F32B0020AF31 /* LaunchScreen.storyboard */,
-				A88477661F30F32B0020AF31 /* Info.plist */,
 			);
 			path = ProjectManagementApp;
 			sourceTree = "<group>";
@@ -163,6 +167,35 @@
 				A884777C1F30F32B0020AF31 /* Info.plist */,
 			);
 			path = ProjectManagementAppUITests;
+			sourceTree = "<group>";
+		};
+		A88477881F30F91B0020AF31 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A884775A1F30F32B0020AF31 /* AppDelegate.swift */,
+				A88477611F30F32B0020AF31 /* Assets.xcassets */,
+				A88477631F30F32B0020AF31 /* LaunchScreen.storyboard */,
+				A88477661F30F32B0020AF31 /* Info.plist */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		A88477891F30F9250020AF31 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A884775C1F30F32B0020AF31 /* ViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A884778A1F30F9360020AF31 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A88477C71F320CE20020AF31 /* Task.swift */,
+				A88477C91F3210380020AF31 /* Project.swift */,
+				A88477CB1F3211F30020AF31 /* DatabaseManager.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,7 +480,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A884775D1F30F32B0020AF31 /* ViewController.swift in Sources */,
+				A88477C81F320CE20020AF31 /* Task.swift in Sources */,
+				A88477CC1F3211F30020AF31 /* DatabaseManager.swift in Sources */,
 				A884775B1F30F32B0020AF31 /* AppDelegate.swift in Sources */,
+				A88477CA1F3210380020AF31 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +734,7 @@
 				A88477811F30F32B0020AF31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A88477821F30F32B0020AF31 /* Build configuration list for PBXNativeTarget "ProjectManagementAppTests" */ = {
 			isa = XCConfigurationList;
@@ -706,6 +743,7 @@
 				A88477841F30F32B0020AF31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A88477851F30F32B0020AF31 /* Build configuration list for PBXNativeTarget "ProjectManagementAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -714,6 +752,7 @@
 				A88477871F30F32B0020AF31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
