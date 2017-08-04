@@ -10,7 +10,6 @@
 		6B2944D8423E25D01B5C6E79 /* Pods_ProjectManagementAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45B69ECC244D63DE1B0C2734 /* Pods_ProjectManagementAppUITests.framework */; };
 		A5C75FAE502165A826ECE940 /* Pods_ProjectManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BEAFC336CAE5C99B7D5F75 /* Pods_ProjectManagementApp.framework */; };
 		A884775B1F30F32B0020AF31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A884775A1F30F32B0020AF31 /* AppDelegate.swift */; };
-		A884775D1F30F32B0020AF31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A884775C1F30F32B0020AF31 /* ViewController.swift */; };
 		A88477601F30F32B0020AF31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A884775E1F30F32B0020AF31 /* Main.storyboard */; };
 		A88477621F30F32B0020AF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A88477611F30F32B0020AF31 /* Assets.xcassets */; };
 		A88477651F30F32B0020AF31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A88477631F30F32B0020AF31 /* LaunchScreen.storyboard */; };
@@ -19,6 +18,9 @@
 		A88477C81F320CE20020AF31 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477C71F320CE20020AF31 /* Task.swift */; };
 		A88477CA1F3210380020AF31 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477C91F3210380020AF31 /* Project.swift */; };
 		A88477CC1F3211F30020AF31 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477CB1F3211F30020AF31 /* DatabaseManager.swift */; };
+		A88477CE1F321EC00020AF31 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477CD1F321EC00020AF31 /* ProjectTableViewController.swift */; };
+		A88477D01F32221E0020AF31 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477CF1F32221E0020AF31 /* ProjectTableViewCell.swift */; };
+		A88477D21F341E420020AF31 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477D11F341E420020AF31 /* ProjectViewController.swift */; };
 		B63209EB52AC82E426D57D71 /* Pods_ProjectManagementAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26EA4C3AE1D25C813F62087E /* Pods_ProjectManagementAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +53,6 @@
 		92566FBE960E98F145627895 /* Pods-ProjectManagementAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectManagementAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectManagementAppUITests/Pods-ProjectManagementAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A88477571F30F32B0020AF31 /* ProjectManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A884775A1F30F32B0020AF31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A884775C1F30F32B0020AF31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A884775F1F30F32B0020AF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A88477611F30F32B0020AF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A88477641F30F32B0020AF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,6 +66,9 @@
 		A88477C71F320CE20020AF31 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A88477C91F3210380020AF31 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		A88477CB1F3211F30020AF31 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		A88477CD1F321EC00020AF31 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
+		A88477CF1F32221E0020AF31 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		A88477D11F341E420020AF31 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +187,9 @@
 		A88477891F30F9250020AF31 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A884775C1F30F32B0020AF31 /* ViewController.swift */,
+				A88477D11F341E420020AF31 /* ProjectViewController.swift */,
+				A88477CD1F321EC00020AF31 /* ProjectTableViewController.swift */,
+				A88477CF1F32221E0020AF31 /* ProjectTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -479,10 +485,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A884775D1F30F32B0020AF31 /* ViewController.swift in Sources */,
+				A88477CE1F321EC00020AF31 /* ProjectTableViewController.swift in Sources */,
+				A88477D01F32221E0020AF31 /* ProjectTableViewCell.swift in Sources */,
 				A88477C81F320CE20020AF31 /* Task.swift in Sources */,
 				A88477CC1F3211F30020AF31 /* DatabaseManager.swift in Sources */,
 				A884775B1F30F32B0020AF31 /* AppDelegate.swift in Sources */,
+				A88477D21F341E420020AF31 /* ProjectViewController.swift in Sources */,
 				A88477CA1F3210380020AF31 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
