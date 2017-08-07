@@ -21,6 +21,9 @@
 		A88477CE1F321EC00020AF31 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477CD1F321EC00020AF31 /* ProjectTableViewController.swift */; };
 		A88477D01F32221E0020AF31 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477CF1F32221E0020AF31 /* ProjectTableViewCell.swift */; };
 		A88477D21F341E420020AF31 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88477D11F341E420020AF31 /* ProjectViewController.swift */; };
+		A8A3509B1F37E69F0021F3BE /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A3509A1F37E69F0021F3BE /* TaskTableViewController.swift */; };
+		A8A3509D1F37E8EA0021F3BE /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A3509C1F37E8EA0021F3BE /* TaskViewController.swift */; };
+		A8A3509F1F37EAF90021F3BE /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A3509E1F37EAF90021F3BE /* TaskTableViewCell.swift */; };
 		B63209EB52AC82E426D57D71 /* Pods_ProjectManagementAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26EA4C3AE1D25C813F62087E /* Pods_ProjectManagementAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,9 @@
 		A88477CD1F321EC00020AF31 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		A88477CF1F32221E0020AF31 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		A88477D11F341E420020AF31 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		A8A3509A1F37E69F0021F3BE /* TaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		A8A3509C1F37E8EA0021F3BE /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		A8A3509E1F37EAF90021F3BE /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +196,9 @@
 				A88477D11F341E420020AF31 /* ProjectViewController.swift */,
 				A88477CD1F321EC00020AF31 /* ProjectTableViewController.swift */,
 				A88477CF1F32221E0020AF31 /* ProjectTableViewCell.swift */,
+				A8A3509A1F37E69F0021F3BE /* TaskTableViewController.swift */,
+				A8A3509E1F37EAF90021F3BE /* TaskTableViewCell.swift */,
+				A8A3509C1F37E8EA0021F3BE /* TaskViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -487,11 +496,14 @@
 			files = (
 				A88477CE1F321EC00020AF31 /* ProjectTableViewController.swift in Sources */,
 				A88477D01F32221E0020AF31 /* ProjectTableViewCell.swift in Sources */,
+				A8A3509F1F37EAF90021F3BE /* TaskTableViewCell.swift in Sources */,
+				A8A3509B1F37E69F0021F3BE /* TaskTableViewController.swift in Sources */,
 				A88477C81F320CE20020AF31 /* Task.swift in Sources */,
 				A88477CC1F3211F30020AF31 /* DatabaseManager.swift in Sources */,
 				A884775B1F30F32B0020AF31 /* AppDelegate.swift in Sources */,
 				A88477D21F341E420020AF31 /* ProjectViewController.swift in Sources */,
 				A88477CA1F3210380020AF31 /* Project.swift in Sources */,
+				A8A3509D1F37E8EA0021F3BE /* TaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

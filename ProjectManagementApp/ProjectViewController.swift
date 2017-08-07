@@ -39,10 +39,10 @@ class ProjectViewController: UIViewController {
         
         //add two button save and cancel   in navigationbar
         
-//        
-//        let cancelButton=UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-//        
-//        navigationItem.leftBarButtonItem = cancelButton
+        
+        let cancelButton=UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        
+        navigationItem.leftBarButtonItem = cancelButton
         
         let saveButton=UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
         
