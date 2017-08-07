@@ -11,7 +11,7 @@ import RealmSwift
 
 class TaskTableViewController: UITableViewController {
 
-    var projects : [Results<Project>] = []
+    var tasks : [Results<Task>] = []
     
     let databaseManager = DatabaseManager.sharesdInstance
     
@@ -33,12 +33,24 @@ class TaskTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
         //target matn barname haminjast
         //action mesle drag kardan button
-        let addButton=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showNew(_:)))
+        let addButton=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showTaskViewController(_:)))
         
         navigationItem.rightBarButtonItem = addButton
+        
+        
+        
+        databaseManager.read(Task.self, completion: {
+            
+            (task) in
+            tasks.insert(task, at: 0)
+            
+            tableView.reloadData()
+        })
+        
+        
     }
     
-    func showNew(_ sender : Any) {
+    func showTaskViewController(_ sender : Any) {
        
         
         let taskViewController = storyboard?.instantiateViewController(withIdentifier: "TaskViewControllerStoryBoard") as! TaskViewController
@@ -55,23 +67,30 @@ class TaskTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tasks[section].count
     }
 
-    /*
+   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseTaskIdentifier", for: indexPath)
 
         // Configure the cell...
+        let myTask = tasks[indexPath.section][indexPath.row]
+        if let myCell = cell as? TaskTableViewCell{
+            myCell.labelTaskName.text = myTask.taskName
+            myCell.labelTaskStatus.text = myTask.taskStatus
+            myCell.labelStartDate.text = dateFormatter.string(from: myTask.taskStartDate)
+            myCell.labelEndDate.text = dateFormatter.string(from: myTask.taskEndDate)
+        }
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

@@ -24,6 +24,9 @@ class TaskViewController: UIViewController {
     let pickerView = UIPickerView()
     
     var dateFormatter = DateFormatter()
+    let databaseManger = DatabaseManager.sharesdInstance
+    
+    var task = Task()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,7 +70,18 @@ class TaskViewController: UIViewController {
     }
     
     func saveInDatabase(){
+        guard let taskName = textFieldTaskName.text,
+            let taskStatus = textFieldTaskStatus.text,
+            let taskStartDate = textFieldtaskStartDate.text,
+            let taskEndDate = textFieldtaskEndDate.text     else { return  }
         
+        task.taskName = taskName
+        task.taskStatus = taskStatus
+        task.taskStartDate = dateFormatter.date(from: taskStartDate)!
+        task.taskEndDate = dateFormatter.date(from: taskEndDate)!
+        
+        databaseManger.write(object: task)
+        //TaskTableViewController.tableView.reloadData()
     }
     
     
