@@ -27,15 +27,25 @@ class TaskViewController: UIViewController {
     let databaseManger = DatabaseManager.sharesdInstance
     
     var task = Task()
+    var project : Project?
+    var string = ""
+    //query result
+    var taskObjects = [Results<Task>]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+//        pickerView.dataSource = self
+//        pickerView.delegate = self
+        
         dateFormatter.dateStyle = .long
         
         datePicker.datePickerMode = .date
         textFieldtaskStartDate.inputView = datePicker
         textFieldtaskEndDate.inputView = datePicker
-        textFieldTaskStatus.inputView = pickerView
+    //    textFieldTaskStatus.inputView = pickerView
         // Do any additional setup after loading the view.
         
         let saveButton=UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveInDatabase))
@@ -66,6 +76,34 @@ class TaskViewController: UIViewController {
         textFieldTaskStatus.inputAccessoryView = toolbar
         
         
+        //pickerview for task status
+        func numberOfComponents(in pickerView: UIPickerView) -> Int {
+            return 1
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            if textFieldTaskStatus.isEditing{
+                return taskObjects[component].count
+            }
+            return 0
+        }
+        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            
+            if textFieldTaskStatus.isEditing{
+                string = "\(taskObjects[component][row].taskStatus)"
+                return string
+            }
+            return ""
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            if textFieldTaskStatus.isEditing{
+                textFieldTaskStatus.text = string
+                task = taskObjects[component][row]
+                return
+            }
+            
+        }
         
     }
     
@@ -80,13 +118,13 @@ class TaskViewController: UIViewController {
         task.taskStartDate = dateFormatter.date(from: taskStartDate)!
         task.taskEndDate = dateFormatter.date(from: taskEndDate)!
         
-        databaseManger.write(object: task)
+   //     databaseManger.write(object: task)
         //TaskTableViewController.tableView.reloadData()
     }
     
     
     func cancel(){
-        
+        self.view.endEditing(true)
     }
     
     func doneMethod(){

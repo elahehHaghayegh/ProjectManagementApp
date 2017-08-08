@@ -21,20 +21,18 @@ class DatabaseManager: NSObject {
     
     
     
-    public func write(object : Object)   {
+    public func write(object : Project)   {
         
         try?realm?.write {
-            if let project = object as? Project{
-                if let duplicateProjectName = realm?.objects(Project.self).filter("projectName = %@",project.projectName){
+            
+                if let duplicateProjectName = realm?.objects(Project.self).filter("projectName = %@",object.projectName){
                     if duplicateProjectName.count>0{
                         //update database
-                        project.id = duplicateProjectName[0].id
-                        realm?.add(project, update: true)
+                        object.id = duplicateProjectName[0].id
+                        realm?.add(object, update: true)
                         return
                     }
                 }
-                
-            }
             //baraye real update we should add update:true
             realm?.add(object, update: true)
         }

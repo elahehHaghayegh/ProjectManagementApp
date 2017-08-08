@@ -12,6 +12,7 @@ import RealmSwift
 class TaskTableViewController: UITableViewController {
 
     var tasks : [Results<Task>] = []
+    var project : Project?
     
     let databaseManager = DatabaseManager.sharesdInstance
     
@@ -33,7 +34,7 @@ class TaskTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
         //target matn barname haminjast
         //action mesle drag kardan button
-        let addButton=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showTaskViewController(_:)))
+        let addButton=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showTaskViewController))
         
         navigationItem.rightBarButtonItem = addButton
         
@@ -53,7 +54,7 @@ class TaskTableViewController: UITableViewController {
     func showTaskViewController(_ sender : Any) {
        
         
-        let taskViewController = storyboard?.instantiateViewController(withIdentifier: "TaskViewControllerStoryBoard") as! TaskViewController
+        let taskViewController = storyboard?.instantiateViewController(withIdentifier: "TaskViewControllerStoryBoard") as! UINavigationController
        //neshoon mide
         present(taskViewController, animated: true, completion: nil)
     }

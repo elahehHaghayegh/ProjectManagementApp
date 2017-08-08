@@ -15,6 +15,8 @@ class ProjectViewController: UIViewController {
     @IBOutlet weak var textFieldStartDate: UITextField!
     @IBOutlet weak var textFieldEndDate: UITextField!
     
+    @IBOutlet weak var btnAddTask: UIButton!
+    
     let datePicker = UIDatePicker()
     
     var dateFormatter = DateFormatter()
@@ -22,11 +24,11 @@ class ProjectViewController: UIViewController {
     var project = Project()
     
     let databaseManager = DatabaseManager.sharesdInstance
-    var projectTableViewController = ProjectTableViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        btnAddTask.isEnabled = false
         // Do any additional setup after loading the view.
         
         dateFormatter.dateStyle = .long
@@ -35,7 +37,7 @@ class ProjectViewController: UIViewController {
         textFieldStartDate.inputView = datePicker
         textFieldEndDate.inputView = datePicker
         
-    //*****************************  chera dokme save va cancel ro nemitoonam bebinam?????????????????????
+    
         
         //add two button save and cancel   in navigationbar
         
@@ -73,21 +75,7 @@ class ProjectViewController: UIViewController {
         
     }
     
-    // save in database
-    
 
-//        
-//        
-//        
-//        budget.amount = Double(amount)!
-//        budget.date = dateFormatter.date(from: date)!
-//        budget.account = account
-//        budget.category = category
-//        
-//        databaseManagerR.write(object: budget)
-//        budgetTableViewController.tableView.reloadData()
-//        dismiss(animated: true, completion: nil)
-//    }
     
     
 
@@ -102,13 +90,16 @@ class ProjectViewController: UIViewController {
         project.projectEndDate = dateFormatter.date(from: endDate)!
         
         databaseManager.write(object: project)
-        projectTableViewController.tableView.reloadData()
-        ///************************dismis benevisam ya dismiss baraye pop up ast???
+        btnAddTask.isEnabled = true
+        
+       
         
     }
     
     func cancel()  {
-        
+        let projectTableViewControllerN = storyboard?.instantiateViewController(withIdentifier: "ProjectTableViewControllerStory") as? UINavigationController
+
+        present(projectTableViewControllerN!, animated: true, completion: nil)
     }
     
     
@@ -131,14 +122,33 @@ class ProjectViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let destinationN = segue.destination as? UINavigationController{
+            if let destination = destinationN.viewControllers[0] as? TaskTableViewController{
+                destination.project?.projectName = project.projectName
+                destination.project?.projectEndDate = project.projectEndDate
+                destination.project?.projectStartDate = project.projectStartDate
+                
+          //      destination.project?.tasks = project.tasks
+                
+            }
+        }
+    
+    
     }
-    */
+    
 
 }
+
+
+
+
+
+
+
+
+

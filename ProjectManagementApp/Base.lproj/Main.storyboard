@@ -86,7 +86,7 @@
         <!--Project-->
         <scene sceneID="HQq-MC-7ZX">
             <objects>
-                <viewController storyboardIdentifier="projectViewControllerStoryBoard" id="Uy3-Qw-1Hl" customClass="ProjectViewController" customModule="ProjectManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Uy3-Qw-1Hl" customClass="ProjectViewController" customModule="ProjectManagementApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hq2-EJ-BnU"/>
                         <viewControllerLayoutGuide type="bottom" id="vpr-AK-2xo"/>
@@ -151,6 +151,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Project" id="Hgv-G7-6yJ"/>
                     <connections>
+                        <outlet property="btnAddTask" destination="hb7-H2-Djc" id="ZJl-Dz-ywf"/>
                         <outlet property="textFieldEndDate" destination="YPU-uE-UyV" id="mI0-HZ-PVJ"/>
                         <outlet property="textFieldProjectName" destination="gG4-hu-ZAs" id="0Bg-u1-dV2"/>
                         <outlet property="textFieldStartDate" destination="m0Z-As-Zcg" id="co4-0o-j2h"/>
@@ -173,7 +174,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="169"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="10g-TC-lkL" id="08a-Fv-kyt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ob8-nQ-TaD">
@@ -248,7 +249,7 @@
         <!--Task-->
         <scene sceneID="fZ7-9K-5vy">
             <objects>
-                <viewController storyboardIdentifier="TaskViewControllerStoryBoard" id="MPG-OT-35L" customClass="TaskViewController" customModule="ProjectManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MPG-OT-35L" customClass="TaskViewController" customModule="ProjectManagementApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lY7-r2-ZTy"/>
                         <viewControllerLayoutGuide type="bottom" id="3Tt-he-sup"/>
@@ -320,12 +321,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3KQ-I6-5Vm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6751.1999999999998" y="412.44377811094455"/>
+            <point key="canvasLocation" x="5804" y="432"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2he-Ft-MRf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AYR-1W-VRP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ProjectTableViewControllerStory" automaticallyAdjustsScrollViewInsets="NO" id="AYR-1W-VRP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yOZ-XZ-mii">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -338,12 +339,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3J-yz-WnD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="544.79999999999995" y="122.78860569715144"/>
+            <point key="canvasLocation" x="900" y="-321"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bUE-qi-Ggf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HA9-9S-yMF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="projectViewControllerStoryBoard" automaticallyAdjustsScrollViewInsets="NO" id="HA9-9S-yMF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uib-qP-szO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -383,7 +384,7 @@
         <!--Navigation Controller-->
         <scene sceneID="kW1-ON-RBT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oNa-sk-c4Z" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TaskViewControllerStoryBoard" automaticallyAdjustsScrollViewInsets="NO" id="oNa-sk-c4Z" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VWh-DO-GL5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -396,7 +397,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EF3-7C-uag" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5812" y="412.44377811094455"/>
+            <point key="canvasLocation" x="4865" y="431"/>
         </scene>
     </scenes>
 </document>

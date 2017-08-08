@@ -25,7 +25,7 @@ class ProjectTableViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = editButtonItem
         
-       let addButton=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showProjectViewController(_:)))
+       let addButton=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showProjectViewController))
         
         navigationItem.rightBarButtonItem = addButton
 
@@ -87,9 +87,9 @@ class ProjectTableViewController: UITableViewController {
     }
     
     
-    func showProjectViewController(_ sender:Any) {
+    func showProjectViewController(_ sender: Any) {
         
-        let projectViewController = storyboard?.instantiateViewController(withIdentifier: "projectViewControllerStoryBoard") as! ProjectViewController
+        let projectViewController = storyboard?.instantiateViewController(withIdentifier: "projectViewControllerStoryBoard") as! UINavigationController
         //neshoon mide
         present(projectViewController, animated: true, completion: nil)
         
