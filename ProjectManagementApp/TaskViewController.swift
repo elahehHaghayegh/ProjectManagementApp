@@ -26,7 +26,7 @@ class TaskViewController: UIViewController {
     var dateFormatter = DateFormatter()
     let databaseManger = DatabaseManager.sharesdInstance
     
-    var task = Task()
+    
     var project : Project?
     var string = ""
     //query result
@@ -96,14 +96,14 @@ class TaskViewController: UIViewController {
             return ""
         }
         
-        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            if textFieldTaskStatus.isEditing{
-                textFieldTaskStatus.text = string
-                task = taskObjects[component][row]
-                return
-            }
-            
-        }
+//        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//            if textFieldTaskStatus.isEditing{
+//                textFieldTaskStatus.text = string
+//                task = taskObjects[component][row]
+//                return
+//            }
+//            
+//        }
         
     }
     
@@ -112,14 +112,13 @@ class TaskViewController: UIViewController {
             let taskStatus = textFieldTaskStatus.text,
             let taskStartDate = textFieldtaskStartDate.text,
             let taskEndDate = textFieldtaskEndDate.text     else { return  }
-        
+        let task = Task()
         task.taskName = taskName
         task.taskStatus = taskStatus
         task.taskStartDate = dateFormatter.date(from: taskStartDate)!
         task.taskEndDate = dateFormatter.date(from: taskEndDate)!
-        
-   //     databaseManger.write(object: task)
-        //TaskTableViewController.tableView.reloadData()
+        project?.tasks.append(task)
+        databaseManger.write(object: project!)
     }
     
     

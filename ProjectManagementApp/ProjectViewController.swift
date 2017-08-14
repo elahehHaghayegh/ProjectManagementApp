@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class ProjectViewController: UIViewController {
-
+    
     @IBOutlet weak var textFieldProjectName: UITextField!
     @IBOutlet weak var textFieldStartDate: UITextField!
     @IBOutlet weak var textFieldEndDate: UITextField!
@@ -27,7 +27,7 @@ class ProjectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         btnAddTask.isEnabled = false
         // Do any additional setup after loading the view.
         
@@ -37,7 +37,7 @@ class ProjectViewController: UIViewController {
         textFieldStartDate.inputView = datePicker
         textFieldEndDate.inputView = datePicker
         
-    
+        
         
         //add two button save and cancel   in navigationbar
         
@@ -75,37 +75,38 @@ class ProjectViewController: UIViewController {
         
     }
     
-
     
     
-
+    
+    
     func save(_ sender : UIButton) {
         
-      guard let projectName = textFieldProjectName.text,
-        let startDate = textFieldStartDate.text,
-        let endDate = textFieldEndDate.text    else { return  }
+        guard let projectName = textFieldProjectName.text,
+            let startDate = textFieldStartDate.text,
+            let endDate = textFieldEndDate.text    else { return  }
         
         project.projectName = projectName
         project.projectStartDate = dateFormatter.date(from: startDate)!
         project.projectEndDate = dateFormatter.date(from: endDate)!
         
+        
         databaseManager.write(object: project)
         btnAddTask.isEnabled = true
         
-       
+        
         
     }
     
     func cancel()  {
         let projectTableViewControllerN = storyboard?.instantiateViewController(withIdentifier: "ProjectTableViewControllerStory") as? UINavigationController
-
+        
         present(projectTableViewControllerN!, animated: true, completion: nil)
     }
     
     
     func doneMethod()  {
         if textFieldStartDate.isEditing{
-        textFieldStartDate.text = dateFormatter.string(from: datePicker.date)
+            textFieldStartDate.text = dateFormatter.string(from: datePicker.date)
         }else if textFieldEndDate.isEditing{
             textFieldEndDate.text = dateFormatter.string(from: datePicker.date)
         }
@@ -115,33 +116,34 @@ class ProjectViewController: UIViewController {
     func cancelMethod()  {
         self.view.endEditing(true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationN = segue.destination as? UINavigationController{
             if let destination = destinationN.viewControllers[0] as? TaskTableViewController{
+                destination.project = Project()
                 destination.project?.projectName = project.projectName
                 destination.project?.projectEndDate = project.projectEndDate
                 destination.project?.projectStartDate = project.projectStartDate
-                
-          //      destination.project?.tasks = project.tasks
-                
+                for myTask in project.tasks {
+                    destination.project?.tasks.append(myTask)
+                }
             }
         }
-    
-    
+        
+        
     }
     
-
+    
 }
 
 

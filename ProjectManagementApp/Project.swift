@@ -15,7 +15,7 @@ class Project: Object {
     dynamic var projectName : String = ""
     dynamic var projectStartDate = Date()
     dynamic var projectEndDate = Date()
-    let tasks = [Task]()
+    let tasks = List<Task>()
     
     
     

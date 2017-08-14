@@ -11,8 +11,8 @@ import RealmSwift
 
 class TaskTableViewController: UITableViewController {
 
-    var tasks : [Results<Task>] = []
     var project : Project?
+    let tasks = List<Task>()
     
     let databaseManager = DatabaseManager.sharesdInstance
     
@@ -28,8 +28,10 @@ class TaskTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        
-        
+//        for myTask in (project?.tasks)! {
+//            objects.append(myTask)
+//        }
+     //   let object = project?.tasks
         
         navigationItem.leftBarButtonItem = editButtonItem
         //target matn barname haminjast
@@ -40,13 +42,6 @@ class TaskTableViewController: UITableViewController {
         
         
         
-        databaseManager.read(Task.self, completion: {
-            
-            (task) in
-            tasks.insert(task, at: 0)
-            
-            tableView.reloadData()
-        })
         
         
     }
@@ -54,9 +49,20 @@ class TaskTableViewController: UITableViewController {
     func showTaskViewController(_ sender : Any) {
        
         
-        let taskViewController = storyboard?.instantiateViewController(withIdentifier: "TaskViewControllerStoryBoard") as! UINavigationController
+        let taskViewControllerN = storyboard?.instantiateViewController(withIdentifier: "TaskViewControllerStoryBoard") as! UINavigationController
        //neshoon mide
-        present(taskViewController, animated: true, completion: nil)
+        
+        let taskViewController = taskViewControllerN.viewControllers[0] as? TaskViewController
+        taskViewController?.project = Project()
+        taskViewController?.project?.projectName = (project?.projectName)!
+        taskViewController?.project?.projectEndDate = (project?.projectEndDate)!
+        taskViewController?.project?.projectStartDate = (project?.projectStartDate)!
+        for myTask in (project?.tasks)! {
+            taskViewController?.project?.tasks.append(myTask)
+        }
+
+        
+        present(taskViewControllerN, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,7 +79,7 @@ class TaskTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tasks[section].count
+        return (tasks.count)
     }
 
    
@@ -81,12 +87,12 @@ class TaskTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseTaskIdentifier", for: indexPath)
 
         // Configure the cell...
-        let myTask = tasks[indexPath.section][indexPath.row]
+        let myTask = tasks[indexPath.row]
         if let myCell = cell as? TaskTableViewCell{
             myCell.labelTaskName.text = myTask.taskName
             myCell.labelTaskStatus.text = myTask.taskStatus
-            myCell.labelStartDate.text = dateFormatter.string(from: myTask.taskStartDate)
-            myCell.labelEndDate.text = dateFormatter.string(from: myTask.taskEndDate)
+            myCell.labelStartDate.text = dateFormatter.string(from: (myTask.taskStartDate))
+            myCell.labelEndDate.text = dateFormatter.string(from: (myTask.taskEndDate))
         }
 
         return cell

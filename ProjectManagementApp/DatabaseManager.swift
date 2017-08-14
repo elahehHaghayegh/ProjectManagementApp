@@ -42,7 +42,6 @@ class DatabaseManager: NSObject {
     //closure in front of completion
     // one type for return output using clouser
     
-    //because these variable has default value it doesn,t matter in other place read  hase these much value
     public func read <T : Object>(_ model : T.Type,
                       
                       completion: (Results<T>)->()){

@@ -95,7 +95,40 @@ class ProjectTableViewController: UITableViewController {
         
     }
     
-
+    
+    //swipe
+    
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete",
+        handler: {(action,indexPath) in
+            
+            let objectForDelete = self.projects[indexPath.section][indexPath.row]
+            //self.databaseManager.deleteItem(object: objectForDelete)
+            
+    })
+        
+        //alert
+        let alert = UIAlertController(title: "Warning", message: "Do you want to delete?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: {
+            (myAction) in
+            self.databaseManager.deleteItem(object: objectForDelete)
+            self.tableView.reloadData()
+        })
+    alert.addAction(okAction)
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
+            (myAction) in
+            self.tableView.reloadData()
+        })
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        return [delete]
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
