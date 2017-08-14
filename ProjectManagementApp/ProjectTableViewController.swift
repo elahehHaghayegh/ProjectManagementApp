@@ -17,6 +17,7 @@ class ProjectTableViewController: UITableViewController {
     
     let databaseManager = DatabaseManager.sharesdInstance
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -130,15 +131,25 @@ class ProjectTableViewController: UITableViewController {
         })
         
         //Edit
-//        let edit = UITableViewRowAction(style: .destructive, title: "Edit", handler:{
-//            (action,indexPath)in
-//            let objectForEdit = self.projects[indexPath.section][indexPath.row]
-//            
-//            //alert
-//            let alert = UIAlertController(title: "", message: <#T##String?#>, preferredStyle: <#T##UIAlertControllerStyle#>)
-//        
-//        })
-        return [delete]
+        let edit = UITableViewRowAction(style: .normal, title: "Edit", handler:{
+            (action,indexPath)in
+            let objectForEdit = self.projects[indexPath.section][indexPath.row]
+           
+            //go to editview
+            let navigationViewControllerg =
+            self.storyboard?.instantiateViewController(withIdentifier: "NavigationEditViewControllerStory") as! UINavigationController
+            
+        let editViewControllerA = navigationViewControllerg.viewControllers[0] as? EditViewController
+            
+            editViewControllerA?.project.projectName = objectForEdit.projectName
+            editViewControllerA?.project.projectStartDate = objectForEdit.projectStartDate
+            editViewControllerA?.project.projectEndDate = objectForEdit.projectEndDate
+            
+            
+            self.present(navigationViewControllerg,animated: true,completion: nil)
+        
+        })
+        return [delete,edit]
     }
     /*
      // Override to support conditional editing of the table view.

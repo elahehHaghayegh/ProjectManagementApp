@@ -159,7 +159,6 @@
 				A88477881F30F91B0020AF31 /* Service */,
 				A88477891F30F9250020AF31 /* Views */,
 				A884775E1F30F32B0020AF31 /* Main.storyboard */,
-				A80A82821F41EDD4007D7B98 /* EditViewController.swift */,
 			);
 			path = ProjectManagementApp;
 			sourceTree = "<group>";
@@ -202,6 +201,7 @@
 				A8A3509A1F37E69F0021F3BE /* TaskTableViewController.swift */,
 				A8A3509E1F37EAF90021F3BE /* TaskTableViewCell.swift */,
 				A8A3509C1F37E8EA0021F3BE /* TaskViewController.swift */,
+				A80A82821F41EDD4007D7B98 /* EditViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
