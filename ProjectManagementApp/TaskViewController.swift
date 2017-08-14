@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class TaskViewController: UIViewController {
+class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     
     @IBOutlet weak var textFieldTaskName: UITextField!
@@ -29,22 +29,24 @@ class TaskViewController: UIViewController {
     
     var project : Project?
     var string = ""
+    
+    let status = ["Inprocess","Todo","Done"]
     //query result
     var taskObjects = [Results<Task>]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        
-//        pickerView.dataSource = self
-//        pickerView.delegate = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         dateFormatter.dateStyle = .long
         
         datePicker.datePickerMode = .date
         textFieldtaskStartDate.inputView = datePicker
         textFieldtaskEndDate.inputView = datePicker
+        
+        textFieldTaskStatus.inputView = pickerView
     //    textFieldTaskStatus.inputView = pickerView
         // Do any additional setup after loading the view.
         
@@ -75,37 +77,23 @@ class TaskViewController: UIViewController {
         textFieldtaskEndDate.inputAccessoryView = toolbar
         textFieldTaskStatus.inputAccessoryView = toolbar
         
-        
+    }
         //pickerview for task status
         func numberOfComponents(in pickerView: UIPickerView) -> Int {
             return 1
         }
         
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            if textFieldTaskStatus.isEditing{
-                return taskObjects[component].count
-            }
-            return 0
+            return status.count
         }
         func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            
-            if textFieldTaskStatus.isEditing{
-                string = "\(taskObjects[component][row].taskStatus)"
+
+                
+                string = "\(status[row])"
                 return string
-            }
-            return ""
+           
         }
-        
-//        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//            if textFieldTaskStatus.isEditing{
-//                textFieldTaskStatus.text = string
-//                task = taskObjects[component][row]
-//                return
-//            }
-//            
-//        }
-        
-    }
+    
     
     func saveInDatabase(){
         guard let taskName = textFieldTaskName.text,
@@ -123,7 +111,9 @@ class TaskViewController: UIViewController {
     
     
     func cancel(){
-        self.view.endEditing(true)
+       ///// self.view.endEditing(true)
+        let taskTableViewControllerR = storyboard?.instantiateViewController(withIdentifier: "NavigationTaskTableViewControllerStory")
+        present(taskTableViewControllerR!, animated: true, completion: nil)
     }
     
     func doneMethod(){
@@ -133,9 +123,9 @@ class TaskViewController: UIViewController {
         }else if textFieldtaskEndDate.isEditing{
             textFieldtaskEndDate.text = dateFormatter.string(from: datePicker.date)
         }else if textFieldTaskStatus.isEditing{
-            textFieldTaskStatus.text = String(describing: pickerView)
+            textFieldTaskStatus.text = string
         }
-        
+        self.view.endEditing(true)
     }
     
     func cancelMethod(){

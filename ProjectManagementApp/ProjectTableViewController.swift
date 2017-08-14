@@ -72,7 +72,18 @@ class ProjectTableViewController: UITableViewController {
         return projects[section].count
     }
     
-    
+    //when click one row of table go to task tableview controller
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedProject = projects[indexPath.section][indexPath.row]
+        
+        let navigationViewControllerT = storyboard?.instantiateViewController(withIdentifier: "NavigationTaskTableViewControllerStory") as! UINavigationController
+        
+        let taskTableViewController = navigationViewControllerT.viewControllers[0] as? TaskTableViewController
+        
+        taskTableViewController?.project = selectedProject
+      present(navigationViewControllerT, animated: true, completion: nil)
+        
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         

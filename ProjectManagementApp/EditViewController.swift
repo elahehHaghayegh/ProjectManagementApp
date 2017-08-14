@@ -77,7 +77,12 @@ class EditViewController: UIViewController {
     }
     
     func doneMethod(){
-        
+        if textFieldProjectStartDate.isEditing{
+            textFieldProjectStartDate.text = dateFormatter.string(from: datePicker.date)
+        }else if textFieldProjectEndDate.isEditing{
+            textFieldProjectEndDate.text = dateFormatter.string(from: datePicker.date)
+        }
+        self.view.endEditing(true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

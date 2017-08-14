@@ -22,18 +22,10 @@ class TaskTableViewController: UITableViewController {
         super.viewDidLoad()
 
         dateFormatter.dateStyle = .long
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+     
+         let cancelButton=UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         
-//        for myTask in (project?.tasks)! {
-//            objects.append(myTask)
-//        }
-     //   let object = project?.tasks
-        
-        navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.leftBarButtonItem = cancelButton
         //target matn barname haminjast
         //action mesle drag kardan button
         let addButton=UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showTaskViewController))
@@ -43,6 +35,14 @@ class TaskTableViewController: UITableViewController {
         
         
         
+        
+    }
+    
+    func cancel(){
+        
+        let projectTableViewControllerN = storyboard?.instantiateViewController(withIdentifier: "ProjectTableViewControllerStory") as? UINavigationController
+        
+        present(projectTableViewControllerN!, animated: true, completion: nil)
         
     }
     
