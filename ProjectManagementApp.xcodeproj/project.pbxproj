@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6B2944D8423E25D01B5C6E79 /* Pods_ProjectManagementAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45B69ECC244D63DE1B0C2734 /* Pods_ProjectManagementAppUITests.framework */; };
 		A5C75FAE502165A826ECE940 /* Pods_ProjectManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BEAFC336CAE5C99B7D5F75 /* Pods_ProjectManagementApp.framework */; };
+		A80A82831F41EDD4007D7B98 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80A82821F41EDD4007D7B98 /* EditViewController.swift */; };
 		A884775B1F30F32B0020AF31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A884775A1F30F32B0020AF31 /* AppDelegate.swift */; };
 		A88477601F30F32B0020AF31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A884775E1F30F32B0020AF31 /* Main.storyboard */; };
 		A88477621F30F32B0020AF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A88477611F30F32B0020AF31 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		8427E019CD6B4E3F7270E2BF /* Pods-ProjectManagementApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectManagementApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectManagementApp/Pods-ProjectManagementApp.debug.xcconfig"; sourceTree = "<group>"; };
 		858F87C00BF898E293694143 /* Pods-ProjectManagementAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectManagementAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectManagementAppUITests/Pods-ProjectManagementAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		92566FBE960E98F145627895 /* Pods-ProjectManagementAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectManagementAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectManagementAppUITests/Pods-ProjectManagementAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A80A82821F41EDD4007D7B98 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		A88477571F30F32B0020AF31 /* ProjectManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A884775A1F30F32B0020AF31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A884775F1F30F32B0020AF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				A88477881F30F91B0020AF31 /* Service */,
 				A88477891F30F9250020AF31 /* Views */,
 				A884775E1F30F32B0020AF31 /* Main.storyboard */,
+				A80A82821F41EDD4007D7B98 /* EditViewController.swift */,
 			);
 			path = ProjectManagementApp;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				A884775B1F30F32B0020AF31 /* AppDelegate.swift in Sources */,
 				A88477D21F341E420020AF31 /* ProjectViewController.swift in Sources */,
 				A88477CA1F3210380020AF31 /* Project.swift in Sources */,
+				A80A82831F41EDD4007D7B98 /* EditViewController.swift in Sources */,
 				A8A3509D1F37E8EA0021F3BE /* TaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
