@@ -36,7 +36,7 @@ class EditViewController: UIViewController {
         
         textFieldProjectName.text = project.projectName
         textFieldProjectStartDate.text = dateFormatter.string(from: project.projectStartDate)
-        textFieldProjectEndDate.text = dateFormatter.string(from: project.projectEndDate)    
+        textFieldProjectEndDate.text = dateFormatter.string(from: project.projectEndDate)
         //add two button save and cancel   in navigationbar
         
         
@@ -73,7 +73,7 @@ class EditViewController: UIViewController {
     }
     
     func cancelMethod(){
-        
+        self.view.endEditing(true)
     }
     
     func doneMethod(){
