@@ -11,8 +11,7 @@ import RealmSwift
 
 class TaskTableViewController: UITableViewController {
 
-    var project : Project?
-    let tasks = List<Task>()
+    var project = Project()
     
     let databaseManager = DatabaseManager.sharesdInstance
     
@@ -53,14 +52,8 @@ class TaskTableViewController: UITableViewController {
        //neshoon mide
         
         let taskViewController = taskViewControllerN.viewControllers[0] as? TaskViewController
-        taskViewController?.project = Project()
-        taskViewController?.project?.projectName = (project?.projectName)!
-        taskViewController?.project?.projectEndDate = (project?.projectEndDate)!
-        taskViewController?.project?.projectStartDate = (project?.projectStartDate)!
-        for myTask in (project?.tasks)! {
-            taskViewController?.project?.tasks.append(myTask)
-        }
-
+        taskViewController?.project = project
+       
         
         present(taskViewControllerN, animated: true, completion: nil)
     }
@@ -79,7 +72,7 @@ class TaskTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (tasks.count)
+        return (project.tasks.count)
     }
 
    
@@ -87,7 +80,7 @@ class TaskTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseTaskIdentifier", for: indexPath)
 
         // Configure the cell...
-        let myTask = tasks[indexPath.row]
+        let myTask = project.tasks[indexPath.row]
         if let myCell = cell as? TaskTableViewCell{
             myCell.labelTaskName.text = myTask.taskName
             myCell.labelTaskStatus.text = myTask.taskStatus
@@ -99,6 +92,8 @@ class TaskTableViewController: UITableViewController {
     }
     
 
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

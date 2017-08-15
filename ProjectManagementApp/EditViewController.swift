@@ -69,7 +69,19 @@ class EditViewController: UIViewController {
     }
     
     func save(){
+    
         
+        let myProject = Project()
+        
+        myProject.id = project.id
+        myProject.projectName = textFieldProjectName.text!
+        myProject.projectStartDate = dateFormatter.date(from: textFieldProjectStartDate.text!)!
+        myProject.projectEndDate = dateFormatter.date(from: textFieldProjectEndDate.text!)!
+        
+        for task in project.tasks {
+            myProject.tasks.append(task)
+        }
+        databaseManger.write(object: myProject)
     }
     
     func cancelMethod(){

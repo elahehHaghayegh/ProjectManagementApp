@@ -85,12 +85,17 @@ class ProjectViewController: UIViewController {
             let startDate = textFieldStartDate.text,
             let endDate = textFieldEndDate.text    else { return  }
         
-        project.projectName = projectName
-        project.projectStartDate = dateFormatter.date(from: startDate)!
-        project.projectEndDate = dateFormatter.date(from: endDate)!
+        let myProject = Project()
         
+        myProject.projectName = projectName
+        myProject.projectStartDate = dateFormatter.date(from: startDate )!
+        myProject.projectEndDate = dateFormatter.date(from: endDate)!
         
-        databaseManager.write(object: project)
+        for task in project.tasks {
+            myProject.tasks.append(task)
+        }
+        databaseManager.write(object: myProject)
+       
         btnAddTask.isEnabled = true
         
         
@@ -100,6 +105,8 @@ class ProjectViewController: UIViewController {
     func cancel()  {
         let projectTableViewControllerN = storyboard?.instantiateViewController(withIdentifier: "ProjectTableViewControllerStory") as? UINavigationController
         
+//        let projectTableViewController = projectTableViewControllerN?.viewControllers[0] as? ProjectTableViewController
+//        projectTableViewController?.tableView
         present(projectTableViewControllerN!, animated: true, completion: nil)
     }
     
@@ -130,17 +137,9 @@ class ProjectViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationN = segue.destination as? UINavigationController{
             if let destination = destinationN.viewControllers[0] as? TaskTableViewController{
-                destination.project = Project()
-                destination.project?.projectName = project.projectName
-                destination.project?.projectEndDate = project.projectEndDate
-                destination.project?.projectStartDate = project.projectStartDate
-                for myTask in project.tasks {
-                    destination.project?.tasks.append(myTask)
+                destination.project = project
                 }
-            }
         }
-        
-        
     }
     
     

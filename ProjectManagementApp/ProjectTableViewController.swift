@@ -55,7 +55,9 @@ class ProjectTableViewController: UITableViewController {
     
     
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
     
     
@@ -152,11 +154,8 @@ class ProjectTableViewController: UITableViewController {
             
         let editViewControllerA = navigationViewControllerg.viewControllers[0] as? EditViewController
             
-            editViewControllerA?.project.projectName = objectForEdit.projectName
-            editViewControllerA?.project.projectStartDate = objectForEdit.projectStartDate
-            editViewControllerA?.project.projectEndDate = objectForEdit.projectEndDate
-            
-            
+            editViewControllerA?.project = objectForEdit
+        
             self.present(navigationViewControllerg,animated: true,completion: nil)
         
         })

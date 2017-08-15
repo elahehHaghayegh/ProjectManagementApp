@@ -27,7 +27,7 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let databaseManger = DatabaseManager.sharesdInstance
     
     
-    var project : Project?
+    var project = Project()
     var string = ""
     
     let status = ["Inprocess","Todo","Done"]
@@ -100,13 +100,30 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let taskStatus = textFieldTaskStatus.text,
             let taskStartDate = textFieldtaskStartDate.text,
             let taskEndDate = textFieldtaskEndDate.text     else { return  }
+       
+       let myProject = Project()
+        
+        myProject.id = project.id
+        myProject.projectName = project.projectName
+        myProject.projectStartDate = project.projectStartDate
+        myProject.projectEndDate = project.projectEndDate
+        
+        for task1 in project.tasks {
+            myProject.tasks.append(task1)
+        }
+        
+        
+        
         let task = Task()
         task.taskName = taskName
         task.taskStatus = taskStatus
         task.taskStartDate = dateFormatter.date(from: taskStartDate)!
         task.taskEndDate = dateFormatter.date(from: taskEndDate)!
-        project?.tasks.append(task)
-        databaseManger.write(object: project!)
+        myProject.tasks.append(task)
+        databaseManger.write(object: myProject)
+        let taskTableViewControllerR = storyboard?.instantiateViewController(withIdentifier: "NavigationTaskTableViewControllerStory")
+        present(taskTableViewControllerR!, animated: true, completion: nil)
+        
     }
     
     
