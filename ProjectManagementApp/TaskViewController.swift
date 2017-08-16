@@ -26,7 +26,7 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var dateFormatter = DateFormatter()
     let databaseManger = DatabaseManager.sharesdInstance
     
-    
+    var task = Task()
     var project = Project()
     var string = ""
     
@@ -49,6 +49,17 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         textFieldTaskStatus.inputView = pickerView
     //    textFieldTaskStatus.inputView = pickerView
         // Do any additional setup after loading the view.
+        
+        
+        if task.taskName != ""{
+            
+            textFieldTaskName.text = task.taskName
+            textFieldTaskStatus.text = task.taskStatus
+            textFieldtaskStartDate.text = dateFormatter.string(from: task.taskStartDate)
+            textFieldtaskEndDate.text = dateFormatter.string(from: task.taskEndDate)
+            
+        }
+        
         
         let saveButton=UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveInDatabase))
         
@@ -102,7 +113,7 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let taskEndDate = textFieldtaskEndDate.text     else { return  }
        
        let myProject = Project()
-        
+       
         myProject.id = project.id
         myProject.projectName = project.projectName
         myProject.projectStartDate = project.projectStartDate
@@ -114,12 +125,16 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         
         
-        let task = Task()
-        task.taskName = taskName
-        task.taskStatus = taskStatus
-        task.taskStartDate = dateFormatter.date(from: taskStartDate)!
-        task.taskEndDate = dateFormatter.date(from: taskEndDate)!
-        myProject.tasks.append(task)
+        let task2 = Task()
+        
+        if task.taskName != "" {
+            task2.id = task.id
+        }
+        task2.taskName = taskName
+        task2.taskStatus = taskStatus
+        task2.taskStartDate = dateFormatter.date(from: taskStartDate)!
+        task2.taskEndDate = dateFormatter.date(from: taskEndDate)!
+        myProject.tasks.append(task2)
         databaseManger.write(object: myProject)
         let taskTableViewControllerR = storyboard?.instantiateViewController(withIdentifier: "NavigationTaskTableViewControllerStory")
         present(taskTableViewControllerR!, animated: true, completion: nil)

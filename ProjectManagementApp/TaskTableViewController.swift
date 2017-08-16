@@ -58,9 +58,8 @@ class TaskTableViewController: UITableViewController {
         present(taskViewControllerN, animated: true, completion: nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -72,7 +71,7 @@ class TaskTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (project.tasks.count)
+        return project.tasks.count
     }
 
    
@@ -91,9 +90,60 @@ class TaskTableViewController: UITableViewController {
         return cell
     }
     
+//swipe
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete",handler: {
+            (action,indexPath) in
+            
+            let objectForDelete = self.project.tasks[indexPath.row]
+            
+            
+            //alert
+            
+            let alert = UIAlertController(title: "Warning", message: "Do you want to delete?", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (myAction) in
+                self.databaseManager.deleteItem(object: objectForDelete)
+                self.tableView.reloadData()
+            })
+            alert.addAction(okAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
+                (myAction) in
+                self.tableView.reloadData()
+            })
+            
+            alert.addAction(cancelAction)
+            
+            self.present(alert, animated: true, completion: nil)
+        })
+        //Edit
+        
+        let edit = UITableViewRowAction(style: .normal, title: "Edit", handler:{
+            (action,indexPath)in
+            let objectForEdit = self.project.tasks[indexPath.row]
+            
+            //go to editview
+            let navigationViewControllerg =
+                self.storyboard?.instantiateViewController(withIdentifier: "TaskViewControllerStoryBoard") as! UINavigationController
+            
+            let editViewControllerA = navigationViewControllerg.viewControllers[0] as? TaskViewController
+            
+            editViewControllerA?.project = self.project
+            editViewControllerA?.task = objectForEdit
+            
+            self.present(navigationViewControllerg,animated: true,completion: nil)
+            
+        })
+        
+        
+        return[delete,edit]
+    }
+    
+    
 
-    
-    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
