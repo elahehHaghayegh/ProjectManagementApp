@@ -53,14 +53,13 @@ class TaskTableViewController: UITableViewController {
         
         let taskViewController = taskViewControllerN.viewControllers[0] as? TaskViewController
         taskViewController?.project = project
-       
         
         present(taskViewControllerN, animated: true, completion: nil)
     }
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        tableView.reloadData()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 

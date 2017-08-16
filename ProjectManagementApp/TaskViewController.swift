@@ -32,13 +32,12 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     let status = ["Todo","Inprocess","Done"]
     //query result
-    var taskObjects = [Results<Task>]()
+   
     
-    var taskTableViewController = TaskTableViewController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         pickerView.delegate = self
         pickerView.dataSource = self
         
@@ -113,21 +112,25 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let taskStatus = textFieldTaskStatus.text,
             let taskStartDate = textFieldtaskStartDate.text,
             let taskEndDate = textFieldtaskEndDate.text     else { return  }
-       
+        
+        guard taskName != "" ,
+        taskStatus != ""
+        else { return }
+        
        let myProject = Project()
        
         myProject.id = project.id
         myProject.projectName = project.projectName
         myProject.projectStartDate = project.projectStartDate
         myProject.projectEndDate = project.projectEndDate
-        
+        for task1 in project.tasks {
+            if task1.id != task.id {
+                myProject.tasks.append(task1)
+            }
+        }
         
         let datetaskStartDate = dateFormatter.date(from: taskStartDate)
         let datetaskEndDate = dateFormatter.date(from: taskEndDate)
-        
-        for task1 in project.tasks {
-            myProject.tasks.append(task1)
-        }
         
         if( datetaskStartDate! < myProject.projectStartDate || datetaskEndDate! > myProject.projectEndDate){
             //open an alert
@@ -159,13 +162,22 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         databaseManger.write(object: myProject)
         
+        
+        
+        
+        
+        
+        let nvigationTaskViewController = storyboard?.instantiateViewController(withIdentifier: "NavigationTaskTableViewControllerStory") as! UINavigationController
+        
         //reload TaskTableViewControler
         
+        let taskTableViewController = nvigationTaskViewController.viewControllers[0] as! TaskTableViewController
+        
+        
+        taskTableViewController.project = myProject
         taskTableViewController.tableView.reloadData()
-        
-        
-        let taskTableViewControllerR = storyboard?.instantiateViewController(withIdentifier: "NavigationTaskTableViewControllerStory")
-        present(taskTableViewControllerR!, animated: true, completion: nil)
+
+        present(nvigationTaskViewController, animated: true, completion: nil)
         
     
         
