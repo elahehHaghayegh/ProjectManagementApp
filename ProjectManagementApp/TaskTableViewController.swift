@@ -58,9 +58,9 @@ class TaskTableViewController: UITableViewController {
         present(taskViewControllerN, animated: true, completion: nil)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        tableView.reloadData()
+//    }
 
     // MARK: - Table view data source
 
@@ -133,6 +133,7 @@ class TaskTableViewController: UITableViewController {
             
             editViewControllerA?.project = self.project
             editViewControllerA?.task = objectForEdit
+           
             
             self.present(navigationViewControllerg,animated: true,completion: nil)
             

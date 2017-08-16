@@ -30,9 +30,11 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var project = Project()
     var string = ""
     
-    let status = ["Inprocess","Todo","Done"]
+    let status = ["Todo","Inprocess","Done"]
     //query result
     var taskObjects = [Results<Task>]()
+    
+    var taskTableViewController = TaskTableViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,11 +121,30 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         myProject.projectStartDate = project.projectStartDate
         myProject.projectEndDate = project.projectEndDate
         
+        
+        let datetaskStartDate = dateFormatter.date(from: taskStartDate)
+        let datetaskEndDate = dateFormatter.date(from: taskEndDate)
+        
         for task1 in project.tasks {
             myProject.tasks.append(task1)
         }
         
-        
+        if( datetaskStartDate! < myProject.projectStartDate || datetaskEndDate! > myProject.projectEndDate){
+            //open an alert
+            
+            //alert
+            
+            let alert = UIAlertController(title: "Warning", message: "Start date or end date is incorrect, please retry!", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+            
+            self.present(alert, animated: true, completion: nil)
+            
+            return
+            
+        }
+
         
         let task2 = Task()
         
@@ -135,9 +156,18 @@ class TaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         task2.taskStartDate = dateFormatter.date(from: taskStartDate)!
         task2.taskEndDate = dateFormatter.date(from: taskEndDate)!
         myProject.tasks.append(task2)
+        
         databaseManger.write(object: myProject)
+        
+        //reload TaskTableViewControler
+        
+        taskTableViewController.tableView.reloadData()
+        
+        
         let taskTableViewControllerR = storyboard?.instantiateViewController(withIdentifier: "NavigationTaskTableViewControllerStory")
         present(taskTableViewControllerR!, animated: true, completion: nil)
+        
+    
         
     }
     

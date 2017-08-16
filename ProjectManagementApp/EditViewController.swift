@@ -82,6 +82,12 @@ class EditViewController: UIViewController {
             myProject.tasks.append(task)
         }
         databaseManger.write(object: myProject)
+        
+        //?????
+        let projectTableViewController = storyboard?.instantiateViewController(withIdentifier: "ProjectTableViewControllerStory")
+        present(projectTableViewController!, animated: true, completion: nil)
+        
+        
     }
     
     func cancelMethod(){
